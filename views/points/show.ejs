@@ -1,0 +1,13 @@
+<h1>User Charge Points</h1>
+<h2><%= point.pointName %></h2>
+<h3>Address: <%= point.address %></h3>
+<h3>Latitude: <%= point.lat %></h3>
+<h3>Longitude: <%= point.lng %></h3>
+<p>Available: <%= point.availability %></p>
+
+<a href="/points/<%= point.id %>/edit" class="button button-primary">Edit</a>
+
+<form action="/points/<%= point.id %>" method="POST">
+  <input type="hidden" name="_method" value="DELETE"/>
+  <button class="button button-primary">Delete</button>
+</form>

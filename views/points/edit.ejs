@@ -1,0 +1,41 @@
+<h1>Edit Point</h1>
+
+<div class="row">
+  <form class="six columns" method="POST" action="/points">
+    <div>
+      <label for="pointName">Charge Point Name</label>
+      <input class="u-full-width" type="text" name="pointName" id="pointName">
+    </div>
+
+    <div>
+      <label for="address">Address</label>
+      <input class="u-full-width" type="text" name="address" id="address">
+    </div>
+
+    <div>
+      <label for="latlng">Lat/Long</label>
+      <input class="u-full-width" type="text" name="latlng" id="latlng">
+    </div>
+
+    <div>
+      <label for="available">Availability</label>
+      <input class="u-full-width" type="text" name="available" id="available">
+    </div>
+
+    <div>
+      <label for="Format">Format of Connector</label>
+      <input class="u-full-width" type="text" name="format" id="format">
+    </div>
+
+    <div>
+      <label for="dateTime1">Booking Start Time</label>
+      <input id="dateTime1" type="datetime-local">
+    </div>
+    <div>
+      <label for="dateTime2">Booking End Time</label>
+      <input id="dateTime2" type="datetime-local">
+    </div>
+
+    <button class="button-primary u-full-width">Edit</button>
+  </form>
+</div>
