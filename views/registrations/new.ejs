@@ -4,7 +4,7 @@
   <p><%= message %></p>
 <% } %>
 
-<form method="POST" action="/register">
+<form method="POST" action="/register" enctype="multipart/form-data">
   <div class="form-group">
     <label for="username">Username</label>
     <input type="text" name="username" id="username" class="form-control">
@@ -20,6 +20,10 @@
   <div class="form-group">
     <label for="passwordConfirmation">Password Confirmation</label>
     <input type="password" name="passwordConfirmation" id="passwordConfirmation" class="form-control">
+  </div>
+  <div>
+    <label for="image">Image</label>
+    <input type="file" name="image" id="image">
   </div>
 
   <button class="btn btn-primary">Register</button>

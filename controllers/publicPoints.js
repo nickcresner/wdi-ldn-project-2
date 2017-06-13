@@ -1,10 +1,10 @@
 const rp = require('request-promise');
 
-
-function pointsProxy(req, res) {
+function publicPointsProxy(req, res) {
   rp({
     url: `http://chargepoints.dft.gov.uk/api/retrieve/registry/format/json`,
-    method: 'GET'
+    method: 'GET',
+    json: true
   })
   .then((results) => {
     res.json(results);
@@ -12,5 +12,5 @@ function pointsProxy(req, res) {
 }
 
 module.exports ={
-  proxy: pointsProxy
+  publicPointsProxy: publicPointsProxy
 };

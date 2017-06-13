@@ -1,13 +1,17 @@
+/* global google */
+
 $(() => {
 
-  console.log('JS Loaded');
+
+  const $map = $('#map');
+  const markers = [];
 
   function initMap() {
     const lat = 51.5073;
     const lng = -0.1276;
     const latLng = { lat: parseFloat(lat), lng: parseFloat(lng) };
 
-    const map = new google.maps.Map(document.getElementById('map'), {
+    const map = new google.maps.Map($map[0], {
       zoom: 9,
       center: latLng,
       zoomControl: true,
@@ -15,36 +19,77 @@ $(() => {
       mapTypeControl: true
     });
 
-    new google.maps.Marker({
-      map: map,
-      position: latLng
-    });
-  }
+    const infoWindow = new google.maps.InfoWindow();
 
-  const $publicChargePoint = $('.publicChargePoint');
-
-  function getPublicChargePoints() {
-    $.get('http://chargepoints.dft.gov.uk/api/retrieve/registry/format/json')
+    $.ajax({
+      url: '/publicPoints',
+      method: 'GET'
+    })
     .then((results) => {
-      $publicChargePoint.empty();
+      $map.removeClass('loading');
+      results.ChargeDevice.forEach((device) => {
 
-      for (let i=0; i < results.length; i++) {
-        const chargeDevice = results[i].ChargeDevice;
-        console.log(chargeDevice);
-        chargeDevice.forEach((object) => {
-          if(object['key'] === 'ChargeDeviceName') ChargeDeviceName = object.value;
-            ChargeDeviceLocation.forEach((object) => {
-              if(object['key'] === 'Latitude') Latitude = object.value;
-              if(object['key'] === 'Longitude') Longitude = object.value;
-            });
+        const pointLatLng = {
+          lat: parseFloat(device.ChargeDeviceLocation.Latitude),
+          lng: parseFloat(device.ChargeDeviceLocation.Longitude)
+        };
+
+        const marker = new google.maps.Marker({
+          map: map,
+          position: pointLatLng,
+          title: device.ChargeDeviceName,
+          icon: '/assets/images/dot.svg'
         });
-  //   if(object['key'] === 'NbEmptyDocks') freeSpaces = object.value
-  // }
-      }
+
+        const address = device.ChargeDeviceLocation.Address;
+        const format = device.Connector.ConnectorType;
+        const subscription = device.SubscriptionDetails;
+
+        marker.addListener('click', () => {
+          if(infoWindow) infoWindow.close();
+          infoWindow.setContent(`
+            <div class="infowindow">
+            <h3>${device.ChargeDeviceName}</h3>
+            <p>Address: ${address}</p>
+            <p>Format: ${format}</p>
+            <% if(${subscription !== null}) { %>
+            <p>Subscription: ${subscription}</p>
+            <% } %>
+            </div>
+          `);
+          infoWindow.open(map, marker);
+        });
+
+        markers.push(marker);
+
+      });
     });
+
   }
 
-  getPublicChargePoints();
-  initMap();
+
+  if($map.hasClass('markers')) initMap();
+
+  function privatePointsMap() {
+    const $map = $('#map');
+    const hasData = !$.isEmptyObject($map.data('location'));
+
+    if(hasData) {
+      const map = new google.maps.Map($map[0], {
+        zoom: 9,
+        center: $map.data('location'),
+        zoomControl: true,
+        scaleControl: true,
+        mapTypeControl: true
+      });
+
+      new google.maps.Marker({
+        map: map,
+        position: $map.data('location')
+      });
+    }
+
+  }
+  if($map.hasClass('user-point')) privatePointsMap();
 
 });

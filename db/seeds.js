@@ -1,13 +1,14 @@
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 
-const dbURI = process.env.MONGODB_URI || 'mongodb://localhost/i-movie-db';
+const { dbURI } = require('../config/environment');
 mongoose.connect(dbURI);
 
 const User = require('../models/user');
 const ChargePoint = require('../models/point');
 
 User.collection.drop();
+ChargePoint.collection.drop();
 
 User
 .create([{
@@ -37,7 +38,15 @@ User
     lng: -0.1988172,
     available: 'Yes',
     format: '3-Pin',
-    createdBy: 'Nick'
+    createdBy: users[0]
+  }, {
+    pointName: 'Alex\'s charge point',
+    address: '50 Battersea Road',
+    lat: 51.92347923,
+    lng: -0.3284092,
+    available: 'Yes',
+    format: '3-Pin',
+    createdBy: users[2]
   }])
   .then((points) => {
     console.log(`${points.length} points created!`);

@@ -1,13 +1,69 @@
-<h1>User Charge Points</h1>
+<h1>User Charge Point</h1>
 <h2><%= point.pointName %></h2>
 <h3>Address: <%= point.address %></h3>
 <h3>Latitude: <%= point.lat %></h3>
 <h3>Longitude: <%= point.lng %></h3>
 <p>Available: <%= point.availability %></p>
+<p>Notes: <%= point.notes %></p>
+<div id="map" class="user-point" data-location="<%= JSON.stringify({ lat: point.lat, lng: point.lng }) %>"></div>
 
-<a href="/points/<%= point.id %>/edit" class="button button-primary">Edit</a>
+<% if(locals.isLoggedIn && point.belongsTo(user)) { %>
+  <a href="/points/<%= point.id %>/edit"><button class="button">Edit</button></a>
+  <form method="POST" action="/points/<%= point.id %>">
+    <input type="hidden" name="_method" value="DELETE">
+    <button>Delete</button>
+  </form>
+<% } %>
 
-<form action="/points/<%= point.id %>" method="POST">
-  <input type="hidden" name="_method" value="DELETE"/>
-  <button class="button button-primary">Delete</button>
-</form>
+<h2>Bookings: </h2>
+  <% point.bookings.forEach((booking) => { %>
+    <div class="booking">
+    <p>Start time: <%= booking.bookingStartTime %></p>
+    <p>End time: <%= booking.bookingEndTime %></p>
+    <small>Booking made by: <%= booking.bookedBy.username %></small>
+
+    <% if(locals.isLoggedIn && booking.belongsTo(user)) { %>
+      <form method="POST" action="/points/<%= point.id %>/bookings/<%= booking.id %>">
+      <input type="hidden" name="_method" value="DELETE">
+      <button class="alert button">Delete</button>
+      </form>
+    <% } %>
+    </div>
+  <% }) %>
+</p>
+
+
+
+<% if(locals.isLoggedIn) { %>
+  <section>
+    <h4>Leave a comment</h4>
+    <form method="POST" action="/points/<%= point.id %>/comments/">
+      <textarea name="content" id="content" placeholder="Comment"></textarea>
+      <button class="button">Leave a comment</button>
+    </form>
+
+    <a href="/points/<%= point.id %>/bookings/new"><button class="button"><p>Make a booking for this point</p></button></a>
+  </section>
+<% } %>
+
+<section>
+  <h4>Comments</h4>
+  <% point.comments.forEach((comment) => { %>
+  <p><%= comment.content %></p>
+  <small><%= comment.createdBy.username %></small>
+
+  <% if(locals.isLoggedIn && comment.belongsTo(user)) { %>
+    <form method="PUT" action="/points/<%= point.id %>/comments/<%= comment.id %>">
+      <input type="hidden" name="_method" value="PUT">
+      <button class="alert button">Edit</button>
+    </form>
+  <% } %>
+
+  <% if(locals.isLoggedIn && comment.belongsTo(user)) { %>
+    <form method="POST" action="/points/<%= point.id %>/comments/<%= comment.id %>">
+      <input type="hidden" name="_method" value="DELETE">
+      <button class="alert button">Delete</button>
+    </form>
+  <% } %>
+<% }) %>
+</section>

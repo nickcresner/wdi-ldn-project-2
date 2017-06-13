@@ -4,36 +4,46 @@
   <form class="six columns" method="POST" action="/points">
     <div>
       <label for="pointName">Charge Point Name</label>
-      <input class="u-full-width" type="text" name="pointName" id="pointName">
+      <input class="u-full-width" type="text" name="pointName" id="pointName" value="<%= point.pointName %>">
     </div>
 
     <div>
       <label for="address">Address</label>
-      <input class="u-full-width" type="text" name="address" id="address">
+      <input class="u-full-width" type="text" name="address" id="address" value="<%= point.address %>">
     </div>
 
     <div>
-      <label for="latlng">Lat/Long</label>
-      <input class="u-full-width" type="text" name="latlng" id="latlng">
+      <label for="lat">Lat</label>
+      <input class="u-full-width" type="text" name="lat" id="lat" value="<%= point.lat %>">
+    </div>
+    <div>
+      <label for="lng">Long</label>
+      <input class="u-full-width" type="text" name="lng" id="lng" value="<%= point.lng %>">
     </div>
 
     <div>
       <label for="available">Availability</label>
-      <input class="u-full-width" type="text" name="available" id="available">
+      <input class="u-full-width" type="text" name="available" id="available" value="<%= point.available %>">
     </div>
 
     <div>
       <label for="Format">Format of Connector</label>
-      <input class="u-full-width" type="text" name="format" id="format">
+      <input class="u-full-width" type="text" name="format" id="format" value="<%= point.format %>">
     </div>
 
     <div>
-      <label for="dateTime1">Booking Start Time</label>
-      <input id="dateTime1" type="datetime-local">
+      <label for="Notes">Notes</label>
+      <input class="u-full-width" type="text" name="notes" id="notes" value="<%= point.notes %>">
+    </div>
+
+
+    <div>
+      <label for="bookingStartTime">Booking Start Time</label>
+      <input id="bookingStartTime" type="datetime-local">
     </div>
     <div>
-      <label for="dateTime2">Booking End Time</label>
-      <input id="dateTime2" type="datetime-local">
+      <label for="bookingEndTime">Booking End Time</label>
+      <input id="bookingEndTime" type="datetime-local">
     </div>
 
     <button class="button-primary u-full-width">Edit</button>

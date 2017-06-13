@@ -7,6 +7,8 @@ const session = require('express-session');
 const flash = require('express-flash');
 const methodOverride = require('method-override');
 const authenticateUser = require('./lib/authenticateUser');
+const errorHandler = require('./lib/errorHandler');
+const customResponses = require('./lib/customResponses');
 const bodyParser = require('body-parser');
 const { port, env, dbURI, sessionSecret } = require('./config/environment');
 const routes = require('./config/routes');
@@ -43,9 +45,11 @@ app.use(session({
 
 app.use(flash());
 
-// app.use(customResponses);
+app.use(customResponses);
 app.use(authenticateUser);
 
 app.use(routes);
+
+app.use(errorHandler);
 
 app.listen(port, () => console.log(`Express is listening on port ${port}`));

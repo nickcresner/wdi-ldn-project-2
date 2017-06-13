@@ -8,24 +8,31 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="/points/index">Charge Points</a>
+          <a class="nav-link" href="/points">Charge Points</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/points/new">Add a Charge Point</a>
         </li>
-        <%  if(!locals.isLoggedIn) { %>
-  <li class="nav-item">
-    <a class="nav-link" href="/login">Log In</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="/registrations/new">Register</a>
-  </li>
-  <% } else { %>
-    <li class="nav-item">
-    <a class="nav-link" href="/logout">Logout</a>
-    </li>
-    <% } %>
       </ul>
-    </div>
-  </nav>
-</header>
+        <ul class="nav navbar-nav navbar-right">
+        <%  if(!locals.isLoggedIn) { %>
+            <li class="nav-item">
+            <a class="nav-link" href="/login">Log In</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/register">Register</a>
+            </li>
+            <% } else { %>
+              <li class="nav-item">
+              <a class="nav-link" href="/logout">Logout</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="/profile">Hi <%= `${user.username}` %></a>
+              </li>
+
+              <% } %>
+              </div>
+          </ul>
+
+        </nav>
+      </header>
