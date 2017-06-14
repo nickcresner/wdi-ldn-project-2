@@ -3,42 +3,49 @@
 <div class="row">
 
   <div id="map" class="private-point"></div>
-
-  <form class="six columns" method="POST" action="/points">
+  <form method="POST" action="/points" enctype="multipart/form-data">
     <div>
       <label for="pointName">Charge Point Name</label>
-      <input class="u-full-width" type="text" name="pointName" id="pointName">
+      <input type="text" name="pointName" id="pointName">
     </div>
 
     <div>
       <label for="address">Address</label>
-      <input class="u-full-width" type="text" name="address" id="address">
-    </div>
-
-    <div>
-      <label for="lat">Lat</label>
-      <input class="u-full-width" type="number" name="lat" id="lat">
-    </div>
-    <div>
-      <label for="lng">Lng</label>
-      <input class="u-full-width" type="number" name="lng" id="lng">
+      <textarea type="text" name="address" id="address"></textarea>
+      <input type="hidden" name="lat" id="lat">
+      <input type="hidden" name="lng" id="lng">
     </div>
 
     <div>
       <label for="available">Availability</label>
-      <input class="u-full-width" type="text" name="available" id="available">
+      <input type="text" name="available" id="available">
     </div>
 
     <div>
       <label for="Format">Format of Connector</label>
-      <input class="u-full-width" type="text" name="format" id="format">
+      <select type="text" name="format" id="format">
+        <option>3-Pin Connector</option>
+        <option>Commando</option>
+        <option>CCS</option>
+        <option>Tesla</option>
+        <option>Type 2 Mennekes</option>
+        <option>Type 1</option>
+        <option>JEVS (CHAdeMO)</option>
+        <option>9-pin CCS (Combo)</option>
+        <option>Other</option>
     </div>
+
 
     <div>
       <label for="notes">Notes</label>
-      <textarea class="u-full-width" name="notes"></textarea>
+      <textarea name="notes" id="notes"></textarea>
     </div>
 
-    <button class="button-primary u-full-width">Create</button>
+    <div>
+      <label for="image">Image</label>
+      <input type="file" name="image" id="image">
+    </div>
+
+    <button class="button-primary">Create</button>
   </form>
 </div>

@@ -6,6 +6,8 @@ const sessions = require('../controllers/sessions');
 const registrations = require('../controllers/registrations');
 const pointsController = require('../controllers/publicPoints');
 const upload = require('../lib/upload');
+const oauth = require('../controllers/oauth');
+
 
 
 router.get('/publicPoints', pointsController.publicPointsProxy);
@@ -16,7 +18,7 @@ router.get('/', (req, res) => res.render('statics/index'));
 //index
 router.route('/points')
   .get(points.index)
-  .post(points.create);
+  .post(upload.single('image'), points.create);
 
 //new
 router.route('/points/new')
@@ -25,7 +27,7 @@ router.route('/points/new')
 //show
 router.route('/points/:id')
   .get(points.show)
-  .put(points.update)
+  .post(upload.single('image'), points.update)
   .delete(points.delete);
 
 //edit
@@ -40,6 +42,7 @@ router.route('/points/:id/bookings/new')
 router.route('/points/:id/bookings')
   .post(secureRoute, points.createBooking);
 
+
 //delete booking
 router.route('/points/:id/bookings/:bookingId')
   .delete(secureRoute, points.deleteBooking);
@@ -53,6 +56,10 @@ router.route('/register')
 router.route('/login')
 .get(sessions.new)
 .post(sessions.create);
+
+//facebook login
+router.route('/oauth/facebook')
+  .get(oauth.facebook);
 
 router.route('/profile')
   .get(secureRoute, registrations.show)

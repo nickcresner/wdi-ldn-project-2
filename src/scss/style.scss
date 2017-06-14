@@ -8,10 +8,6 @@ body {
 
 header{
   nav{
-    // position: absolute;
-    // top: 0;
-    // left: 0;
-    // right: 0;
     height: 50px;
     margin-bottom: 50px;
     ul{
@@ -58,6 +54,7 @@ header{
   height: 100vh;
   background-color: lightgrey;
   position: relative;
+  width: 100%;
 }
 
 #map.loading:after {
@@ -74,15 +71,26 @@ header{
   font-size: 100px;
 }
 
-
-footer {
-  background-color: #0275d8;
-  text-align: center;
-  margin-bottom: 0rem;
-  bottom: 0;
-  width: 100%;
-  margin-top: 20px;
+.private-point {
+  height: 30vh;
+  width: 200px;
 }
+
+.wrapper {
+  height: 100vh;
+}
+
+.wrapper:after {
+  footer {
+    background-color: #0275d8;
+    text-align: center;
+    margin-bottom: 0rem;
+    bottom: 0;
+    width: 100%;
+    margin-top: 20px;
+  }
+}
+
 
 .right {
   float: right;

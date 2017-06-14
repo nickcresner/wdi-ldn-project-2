@@ -1,11 +1,12 @@
 <h1>User Charge Point</h1>
 <h2><%= point.pointName %></h2>
+<img src="<%= point.imageSRC %>" alt="<%= point.pointName %>">
 <h3>Address: <%= point.address %></h3>
 <h3>Latitude: <%= point.lat %></h3>
 <h3>Longitude: <%= point.lng %></h3>
 <p>Available: <%= point.availability %></p>
 <p>Notes: <%= point.notes %></p>
-<div id="map" class="user-point" data-location="<%= JSON.stringify({ lat: point.lat, lng: point.lng }) %>"></div>
+<div id="map" class="private-point-show" data-location="<%= JSON.stringify({ lat: point.lat, lng: point.lng }) %>"></div>
 
 <% if(locals.isLoggedIn && point.belongsTo(user)) { %>
   <a href="/points/<%= point.id %>/edit"><button class="button">Edit</button></a>

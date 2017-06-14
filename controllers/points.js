@@ -38,6 +38,9 @@ function pointsShow(req, res) {
 
 function pointsCreate(req, res) {
   req.body.createdBy = req.user;
+  if(req.file) req.body.image = req.file.key;
+
+  console.log('REQ BODY FOR POINTS CREATE', req.body);
   Point
     .create(req.body)
     .then(() => {
@@ -63,6 +66,8 @@ function pointsEdit(req, res) {
 }
 
 function pointsUpdate(req, res) {
+  if(req.file) req.body.image =req.file.key;
+  console.log('REQ BODY', req.body);
   Point
   .findById(req.params.id)
   .exec()

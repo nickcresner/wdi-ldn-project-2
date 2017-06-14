@@ -1,7 +1,8 @@
 <h1>Edit Point</h1>
 
 <div class="row">
-  <form class="six columns" method="POST" action="/points">
+  <form class="six columns" method="POST" action="/points/<%= point.id %>" enctype="multipart/form-data">
+    <input type="hidden" name="_method" value="PUT">
     <div>
       <label for="pointName">Charge Point Name</label>
       <input class="u-full-width" type="text" name="pointName" id="pointName" value="<%= point.pointName %>">
@@ -35,17 +36,11 @@
       <label for="Notes">Notes</label>
       <input class="u-full-width" type="text" name="notes" id="notes" value="<%= point.notes %>">
     </div>
+    <label for="image">Image</label>
+    <img src="<%= point.imageSRC %>" alt="<%= point.pointName %>">
+    <input type="file" name="image" id="image" value="<%= point.imageSRC %>">
 
 
-    <div>
-      <label for="bookingStartTime">Booking Start Time</label>
-      <input id="bookingStartTime" type="datetime-local">
-    </div>
-    <div>
-      <label for="bookingEndTime">Booking End Time</label>
-      <input id="bookingEndTime" type="datetime-local">
-    </div>
-
-    <button class="button-primary u-full-width">Edit</button>
+    <button class="button-primary u-full-width">Update Charge Point</button>
   </form>
 </div>

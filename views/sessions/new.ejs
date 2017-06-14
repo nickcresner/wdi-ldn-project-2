@@ -1,4 +1,13 @@
-<h1>Login</h1>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.9&appId=642653795925190";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<h1>Login to Juicer</h1>
 <div class="loginForm">
   <form class="loginForm" method="POST" action="/login">
     <div>
@@ -11,5 +20,6 @@
     </div>
 
     <button class="button">Login</button>
+    <a href="<%= oauth.facebook.getLoginURL() %>" class="button is-primary">Login with Facebook</a>
   </form>
 </div>

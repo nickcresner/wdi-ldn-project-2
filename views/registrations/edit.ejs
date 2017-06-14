@@ -1,6 +1,6 @@
-<form method="POST" action="/profile">
+<form method="POST" action="/register" enctype="multipart/form-data">
   <input type="hidden" name="_method" value="PUT">
-  <form method="POST" action="/register" enctype="multipart/form-data">
+
   <div>
     <label for="firstName">First Name</label>
     <input type="text" name="firstName" id="firstName" value="<%= user.firstName %>">

@@ -38,14 +38,16 @@ User
     lng: -0.1988172,
     available: 'Yes',
     format: '3-Pin',
+    image: 'assets/images/chargepoint1.png',
     createdBy: users[0]
   }, {
     pointName: 'Alex\'s charge point',
     address: '50 Battersea Road',
-    lat: 51.92347923,
-    lng: -0.3284092,
+    lat: 51.4762239,
+    lng: -0.1535641,
     available: 'Yes',
     format: '3-Pin',
+    image: 'assets/images/chargepoint2.png',
     createdBy: users[2]
   }])
   .then((points) => {

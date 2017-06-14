@@ -24,7 +24,7 @@ bookingSchema.methods.belongsTo = function bookingBookedBy(user) {
 
 const pointSchema = new mongoose.Schema({
   pointName: { type: String, required: true },
-  address: { type: String, required: true},
+  address: { type: String },
   lat: { type: Number, required: true },
   lng: { type: Number, required: true },
   available: { type: String },
@@ -41,6 +41,14 @@ const pointSchema = new mongoose.Schema({
 pointSchema.methods.belongsTo = function pointBelongsTo(user) {
   return this.createdBy.id === user.id;
 };
+
+pointSchema
+  .virtual('imageSRC')
+  .get(function getImageSRC() {
+    if(!this.image) return null;
+    if(this.image.match(/^http/)) return this.image;
+    return `https://s3-eu-west-1.amazonaws.com/wdi-27-ldn-project-2-nick/${this.image}`;
+  });
 
 
 

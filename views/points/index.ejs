@@ -1,9 +1,9 @@
-<div id="map" class="markers loading"></div>
+<div id="map" class="markers loading" data-points="<%= JSON.stringify(points) %>"></div>
 
 <% points.forEach((point) => { %>
   <div class="large-3 columns">
   <a href="/points/<%= point.id %>">
-  <img class="thumbnail" src="<%= point.image %>" alt="<%= point.pointName %>">
+  <img class="thumbnail" src="<%= point.imageSRC %>" alt="<%= point.pointName %>">
   <h2><%= point.pointName %></h2>
   <h4><%= point.address %></h4>
 <% }) %>
