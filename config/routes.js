@@ -48,7 +48,7 @@ router.route('/points/:id/bookings/:bookingId')
 //register
 router.route('/register')
 .get(registrations.new)
-.post(registrations.create);
+.post(upload.single('image'), registrations.create);
 
 router.route('/login')
 .get(sessions.new)
@@ -64,8 +64,8 @@ router.route('/profile')
 //   .put(secureRoute, registrations.update)
 //   .delete(secureRoute, registrations.delete);
 
-// router.route('/profile/:id/edit')
-//   .get(secureRoute, registrations.edit);
+router.route('/profile/:id/edit')
+  .get(secureRoute, registrations.edit);
 
 router.route('/logout')
   .get(sessions.delete);

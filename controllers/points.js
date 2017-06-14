@@ -36,19 +36,6 @@ function pointsShow(req, res) {
     });
 }
 
-function filmsShow(req, res) {
-  Film
-    .findById(req.params.id)
-    .then((film) => {
-      if(!film) {
-        const err = new Error('Not Found');
-        err.status = 404;
-        throw err;
-      }
-      res.render('films/show', { film });
-    });
-}
-
 function pointsCreate(req, res) {
   req.body.createdBy = req.user;
   Point

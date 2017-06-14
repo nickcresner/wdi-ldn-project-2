@@ -1,5 +1,6 @@
 <form method="POST" action="/profile">
   <input type="hidden" name="_method" value="PUT">
+  <form method="POST" action="/register" enctype="multipart/form-data">
   <div>
     <label for="firstName">First Name</label>
     <input type="text" name="firstName" id="firstName" value="<%= user.firstName %>">
@@ -24,6 +25,9 @@
     <label for="passwordConfirmation">Password Confirmation</label>
     <input type="password" name="passwordConfirmation" id="passwordConfirmation">
   </div>
+  <label for="image">Image</label>
+  <img src="<%= user.imageSRC %>" alt="<%= user.username %>">
+  <input type="file" name="image" id="image" value="<%= user.imageSRC %>">
 
-  <button class="button">Register</button>
+  <button class="button">Update Profile</button>
 </form>

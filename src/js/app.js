@@ -41,8 +41,8 @@ $(() => {
           icon: '/assets/images/dot.svg'
         });
 
-        const address = device.ChargeDeviceLocation.Address;
-        const format = device.Connector.ConnectorType;
+        const address = device.ChargeDeviceLocation.Address.PostCode;
+        const format = device.Connector[0].ConnectorType;
         const subscription = device.SubscriptionDetails;
 
         marker.addListener('click', () => {
@@ -50,11 +50,9 @@ $(() => {
           infoWindow.setContent(`
             <div class="infowindow">
             <h3>${device.ChargeDeviceName}</h3>
-            <p>Address: ${address}</p>
+            <p>PostCode: ${address}</p>
             <p>Format: ${format}</p>
-            <% if(${subscription !== null}) { %>
             <p>Subscription: ${subscription}</p>
-            <% } %>
             </div>
           `);
           infoWindow.open(map, marker);

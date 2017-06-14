@@ -4,9 +4,9 @@ function registrationsNew(req, res) {
   return res.render('registrations/new');
 }
 
-function registrationsCreate(req, res) {
-
+function registrationsCreate(req, res, next) {
   if(req.file) req.body.image = req.file.key;
+  console.log('req.body', req.body);
 
   User
   .create(req.body)
@@ -15,7 +15,7 @@ function registrationsCreate(req, res) {
     if (err.name === 'ValidationError') {
       return res.badRequest('/register', err.toString());
     }
-    res.status(500).end();
+    next();
   });
 }
 
