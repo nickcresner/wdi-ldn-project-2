@@ -12,10 +12,8 @@
       <label class="label" for="password">Password</label>
       <input class="input" type="password" name="password" id="password" required>
     </div>
-
-<div class="buttons">
     <button class="button is-primary is-fullwidth">Login</button>
-      <button class="button is-primary is-fullwidth" href="<%= oauth.facebook.getLoginURL() %>"><i class="fa fa-facebook-official" aria-hidden="true">  </i> Login with Facebook</button>
-    </form>
-  </div>
+  </form>
+
+  <a class="button is-primary is-fullwidth" href="<%= oauth.facebook.getLoginURL() %>"><i class="fa fa-facebook-official" aria-hidden="true">  </i> Login with Facebook</a>
 </div>

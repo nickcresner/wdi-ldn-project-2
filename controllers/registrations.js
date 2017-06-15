@@ -33,7 +33,7 @@ function registrationsUpdate(req, res, next) {
   }
 
   req.user.save()
-  .then(() => res.redirect('/users'))
+  .then(() => res.redirect('/profile'))
   .catch((err) => {
     if(err.name === 'ValidationError') return res.badRequest('/registrations/edit', err.toString());
     next(err);

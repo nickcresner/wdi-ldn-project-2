@@ -1,78 +1,98 @@
+<div class="columns">
+  <div class="column animated fadeInDown">
+    <h2 class="title is-2"><%= point.pointName %></h2>
+    <div class="card">
+      <div class="card show-point-image" style="background-image: url(<%= point.imageSRC %>)"></div>
+      <div class="card-content">
+        <div class="show-logged-in-buttons">
+          <% if(locals.isLoggedIn && point.belongsTo(user)) { %>
+            <a class="button show-button is-primary is-outlined is-fullwidth" href="/points/<%= point.id %>/edit">Edit</a>
+            <form method="POST" action="/points/<%= point.id %>">
+            <input type="hidden" name="_method" value="DELETE">
+            <a class="button show-button is-primary is-outlined is-fullwidth">Delete</a>
 
-<h2 class="title is-2"><%= point.pointName %></h2>
-<% if(locals.isLoggedIn && point.belongsTo(user)) { %>
-  <a class="button is-primary is-outlined" href="/points/<%= point.id %>/edit">Edit</a>
-  <form method="POST" action="/points/<%= point.id %>">
-    <input type="hidden" name="_method" value="DELETE">
-    <a class="button is-primary is-outlined">Delete</a>
-  </form>
-<% } %>
+            </form>
+            <% } %>
+
+          </div>
+          <h3>Address: <%= point.address %></h3>
+          <div hidden id="lat"><%= point.lat %></div>
+          <div hidden id="lng"><%= point.lng %></div>
+          <p>Available: <%= point.availability %></p>
+          <p>Notes: <%= point.notes %></p>
+        </div>
+      </div>
+    </div >
+    <div class="column">
+      <div id="map" class="animated fadeInUp private-point-show column" data-location="<%= JSON.stringify({ lat: point.lat, lng: point.lng }) %>">
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <div class="columns">
-  <div class="column">
-<img src="<%= point.imageSRC %>" alt="<%= point.pointName %>">
-<h3>Address: <%= point.address %></h3>
-<div hidden id="lat"><%= point.lat %></div>
-<div hidden id="lng"><%= point.lng %></div>
-<p>Available: <%= point.availability %></p>
-<p>Notes: <%= point.notes %></p>
-</div>
-<div id="map" class="private-point-show column" private-point-show" data-location="<%= JSON.stringify({ lat: point.lat, lng: point.lng }) %>"></div>
-
-<div class="column">
-<h2>Bookings: </h2>
-  <% point.bookings.forEach((booking) => { %>
-    <div class="booking">
-    <p>Start time: <%= booking.bookingStartTime %></p>
-    <p>End time: <%= booking.bookingEndTime %></p>
-    <small>Booking made by: <%= booking.bookedBy.username %></small>
-
-    <% if(locals.isLoggedIn && booking.belongsTo(user)) { %>
-      <form method="POST" action="/points/<%= point.id %>/bookings/<%= booking.id %>">
-      <input type="hidden" name="_method" value="DELETE">
-      <button class="alert button">Delete</button>
-      </form>
+  <div class="column is-half bookings">
+  <div class="box">
+    <% if(locals.isLoggedIn) { %>
+    <a class="button show-button is-primary is-outlined is-fullwidth" href="/points/<%= point.id %>/bookings/new">Make a booking for this point</a>
+    </section>
     <% } %>
+    <h3>Existing Bookings</h3>
+    <div class="box">
+    <% point.bookings.forEach((booking) => { %>
+
+      <form class="booking">
+      <p>Start time: <%= booking.bookingStartTime %></p>
+      <p>End time: <%= booking.bookingEndTime %></p>
+      <small>Booking made by: <%= booking.bookedBy.username %></small>
+
+      <% if(locals.isLoggedIn && booking.belongsTo(user)) { %>
+        <form method="POST" action="/points/<%= point.id %>/bookings/<%= booking.id %>">
+        <input type="hidden" name="_method" value="DELETE">
+        <button class="alert button">Delete</button>
+        </form>
+        <% } %>
+        <% }) %>
+      </div>
+      </div>
     </div>
-  <% }) %>
-</p>
-</div>
 
 
-<div class="column">
-<% if(locals.isLoggedIn) { %>
-  <section>
-    <h4>Leave a comment</h4>
-    <form method="POST" action="/points/<%= point.id %>/comments/">
-      <textarea name="content" id="content" placeholder="Comment"></textarea>
-      <button class="button">Leave a comment</button>
-    </form>
 
-    <a href="/points/<%= point.id %>/bookings/new"><button class="button"><p>Make a booking for this point</p></button></a>
-  </section>
-<% } %>
 
-<section>
-  <h4>Comments</h4>
-  <% point.comments.forEach((comment) => { %>
-  <p><%= comment.content %></p>
-  <small><%= comment.createdBy.username %></small>
+        <div class="column is-half">
+        <div class="box comments-box">
+          <% if(locals.isLoggedIn) { %>
 
-  <% if(locals.isLoggedIn && comment.belongsTo(user)) { %>
-    <form method="PUT" action="/points/<%= point.id %>/comments/<%= comment.id %>">
-      <input type="hidden" name="_method" value="PUT">
-      <button class="alert button">Edit</button>
-    </form>
-  <% } %>
+            <section>
+            <h4>Leave a comment</h4>
+            <form class="form " method="POST" action="/points/<%= point.id %>/comments/">
+            <textarea class="textarea" name="content" id="content" placeholder="Comment"></textarea>
+            <button class="button show-button is-primary is-outlined is-fullwidth">Leave a comment</button>
+            </form>
+            <% } %>
 
-  <% if(locals.isLoggedIn && comment.belongsTo(user)) { %>
-    <form method="POST" action="/points/<%= point.id %>/comments/<%= comment.id %>">
-      <input type="hidden" name="_method" value="DELETE">
-      <button class="alert button">Delete</button>
-    </form>
-  <% } %>
-<% }) %>
-</section>
-</div>
-</div>
+
+            <h4>Comments</h4>
+            <% point.comments.forEach((comment) => { %>
+              <p><%= comment.content %></p>
+              <small><%= comment.createdBy.username %></small>
+
+              <% if(locals.isLoggedIn && comment.belongsTo(user)) { %>
+                <form method="PUT" action="/points/<%= point.id %>/comments/<%= comment.id %>">
+                <input type="hidden" name="_method" value="PUT">
+                <button class="button show-button is-primary is-outlined is-small">Edit</button>
+                </form>
+                <% } %>
+
+                <% if(locals.isLoggedIn && comment.belongsTo(user)) { %>
+                  <form method="POST" action="/points/<%= point.id %>/comments/<%= comment.id %>">
+                  <input type="hidden" name="_method" value="DELETE">
+                  <button class="button show-button is-primary is-outlined is-small">Delete</button>
+                  </form>
+                  <% } %>
+                  <% }) %>
+                </div>
+              </div>
+            </div>

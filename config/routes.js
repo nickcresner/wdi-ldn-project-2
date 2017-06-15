@@ -66,10 +66,8 @@ router.route('/profile')
   .post(secureRoute, upload.single('image'), registrations.update)
   .delete(secureRoute, registrations.delete);
 
-// router.route('/profile/:id')
-//   .get(secureRoute, registrations.show)
-//   .put(secureRoute, registrations.update)
-//   .delete(secureRoute, registrations.delete);
+router.route('/profile/:id')
+  .post(secureRoute, registrations.update);
 
 router.route('/profile/:id/edit')
   .get(secureRoute, registrations.edit);

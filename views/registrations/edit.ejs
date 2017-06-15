@@ -1,33 +1,29 @@
-<form method="POST" action="/register" enctype="multipart/form-data">
-  <input type="hidden" name="_method" value="PUT">
+<div class="columns">
+  <div class="box column is-half is-offset-one-quarter">
+    <h1 class="title is-1">Profile Editor</h1>
+<form method="POST" action="/profile/<%= user.id %>" enctype="multipart/form-data">
 
   <div>
-    <label for="firstName">First Name</label>
-    <input type="text" name="firstName" id="firstName" value="<%= user.firstName %>">
+    <label class="label" for="username">Username</label>
+    <input class="input" type="text" name="username" id="username" value="<%= user.username %>">
   </div>
   <div>
-    <label for="lastName">Last Name</label>
-    <input type="text" name="lastName" id="lastName" value="<%= user.lastName %>">
+    <label class="label" for="email">Email</label>
+    <input class="input" type="email" name="email" id="email" value="<%= user.email %>">
   </div>
   <div>
-    <label for="username">Username</label>
-    <input type="text" name="username" id="username" value="<%= user.username %>">
+    <label class="label" for="password">Password</label>
+    <input class="input" type="password" name="password" id="password">
   </div>
   <div>
-    <label for="email">Email</label>
-    <input type="email" name="email" id="email" value="<%= user.email %>">
+    <label class="label" for="passwordConfirmation">Password Confirmation</label>
+    <input class="input" type="password" name="passwordConfirmation" id="passwordConfirmation">
   </div>
-  <div>
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password">
-  </div>
-  <div>
-    <label for="passwordConfirmation">Password Confirmation</label>
-    <input type="password" name="passwordConfirmation" id="passwordConfirmation">
-  </div>
-  <label for="image">Image</label>
+  <label class="label" for="image">Image</label>
   <img src="<%= user.imageSRC %>" alt="<%= user.username %>">
-  <input type="file" name="image" id="image" value="<%= user.imageSRC %>">
+  <input class="input" type="file" name="image" id="image" value="<%= user.imageSRC %>">
 
-  <button class="button">Update Profile</button>
+  <button class="update-profile-button button is-primary">Update Profile</button>
 </form>
+</div>
+</div>

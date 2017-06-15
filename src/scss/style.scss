@@ -5,6 +5,39 @@ body {
   margin: 0 auto;
 }
 
+#video-background {
+  /*  making the video fullscreen  */
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  video-background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+}
+
+.jumbotron {
+    margin-top: 30px;
+    height: 75vh;
+    z-index: 100;
+    color: black;
+    h1 {
+      font-size: 80px;
+      text-align: center;
+    }
+    p {
+      text-align: center;
+      font-size: 30px;
+    }
+}
+.jumbotron {
+  background-position: center;
+  background-repeat: no-repeat;
+
+}
+
   .logo {
 
     margin-top: 20px;
@@ -30,21 +63,6 @@ body {
     color: white;
     margin-top: 20px;
   }
-
-.jumbotron {
-  color: white;
-  height: 75vh;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/assets/images/heroimage.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  h1 {
-    font-size: 60px;
-    text-align: center;
-  }
-  p {
-    text-align: center;
-  }
-}
 
 
 #map {
@@ -73,18 +91,6 @@ body {
   width: 200px;
 }
 
-
-
-  footer {
-    background-color: #0275d8;
-    text-align: center;
-    margin-bottom: 0rem;
-    bottom: 0;
-    width: 100%;
-    margin-top: 20px;
-  }
-
-
 .right {
   float: right;
 }
@@ -92,21 +98,18 @@ body {
   float: left;
 }
 
-.booking {
-  border: solid 1px grey;
-}
-
 .fa.fa-facebook-official {
   padding-right: 5px;
 }
 
-.buttons{
 
+.button.is-primary.is-fullwidth {
+  margin-bottom: 10px;
+}
   .button{
     display: block;
     margin-bottom: 10px;
   }
-}
 
 h1.label {
   text-align: center;
@@ -125,7 +128,40 @@ h1.label {
   text-align: center;
 }
 
-index-map {
+.index-map {
   border: 1px solid lightgrey;
   border-radius: 5px;
+}
+
+.show-button {
+  width: 75px;
+}
+
+.show-point-image {
+  max-width: 100%;
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 10px;
+}
+
+.show-button {
+  display: inline-block;
+}
+
+.private-point-show {
+  height: 50vh;
+}
+
+.booking-button {
+  margin-top: 20px;
+}
+
+.update-button {
+  margin-top: 20px;
+}
+
+.update-profile-button {
+  margin-top: 20px;
 }

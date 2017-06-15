@@ -1,27 +1,30 @@
-<h1>Make a Booking</h1>
 
+<div class="booking column box is-offset-one-quarter is-half">
+  <h1>Make a Booking</h1>
+  <div class="box">
 <h2><%= point.pointName %></h2>
 <h3>Address: <%= point.address %></h3>
 <h3>Latitude: <%= point.lat %></h3>
 <h3>Longitude: <%= point.lng %></h3>
 <p>Available: <%= point.availability %></p>
 <p>Notes: <%= point.notes %></p>
-<p>Bookings: <%= point.bookings %></p>
+</div>
 
-<form method="POST" action="/points/<%= point.id %>/bookings">
+<form class="form" method="POST" action="/points/<%= point.id %>/bookings">
   <div>
-    <label for="bookingStartTime">Booking Start Time</label>
-    <input name="bookingStartTime" id="bookingStartTime" type="datetime-local">
+    <label class="label" for="bookingStartTime">Booking Start Time</label>
+    <input class="input" name="bookingStartTime" id="bookingStartTime" type="datetime-local">
   </div>
   <div>
-    <label for="bookingEndTime">Booking End Time</label>
-    <input name="bookingEndTime" id="bookingEndTime" type="datetime-local">
+    <label class="label" for="bookingEndTime">Booking End Time</label>
+    <input class="input" name="bookingEndTime" id="bookingEndTime" type="datetime-local">
   </div>
 
   <% if(locals.isLoggedIn) { %>
     <section>
-        <button class="button">Book</button>
+        <button class="booking-button button is-fullwidth is-primary">Book</button>
     </section>
   <% } %>
 
 </form>
+</div>
