@@ -34,6 +34,7 @@ Users also have the ability to create edit and delete their user profiles
 - NodeJS
 - Google Maps API
 - Facebook oAuth Log-in API
+- MongoDB
 
 ##Challenges Faced
 
