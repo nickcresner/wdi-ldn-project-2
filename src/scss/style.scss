@@ -1,60 +1,57 @@
 
 
 body {
-  background: turquoise;
   font-family: 'Monda', sans-serif;
   margin: 0 auto;
 }
 
-header{
-  nav{
-    height: 50px;
-    margin-bottom: 50px;
-    ul{
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      .right{
-        float: right;
-        margin-right: 20px;
-      }
-      li{
-        float: left;
-        margin-left: 20px;
-        line-height: 50px;
-        &.menu{
-          color: #000;
-          cursor: pointer;
-          font-size: 25px;
-          display: none;
-        }
-        a{
-          color: #fff;
-        }
-        a:hover{
-          color: #fff;
-          text-decoration: none;
-        }
-      }
-    }
+  .logo {
+
+    margin-top: 20px;
   }
-}
+
+  .nav {
+    background-color: #57A773;
+  }
+
+  .index-card {
+    margin: 10px 0;
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+  .points {
+    height: 85vh;
+    overflow: scroll;
+  }
+
+  a.nav-item {
+    padding-bottom: 20px;
+    color: white;
+    margin-top: 20px;
+  }
 
 .jumbotron {
   color: white;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/assets/images/heroimage.jpg');
+  height: 75vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/assets/images/heroimage.jpg');
   background-position: center;
+  background-repeat: no-repeat;
   h1 {
     font-size: 60px;
+    text-align: center;
+  }
+  p {
+    text-align: center;
   }
 }
 
 
 #map {
-  height: 100vh;
+  height: 85vh;
   background-color: lightgrey;
-  position: relative;
   width: 100%;
+  margin-bottom: 50px;
 }
 
 #map.loading:after {
@@ -101,4 +98,38 @@ header{
 
 .booking {
   border: solid 1px grey;
+}
+
+.fa.fa-facebook-official {
+  padding-right: 5px;
+}
+
+.buttons{
+  margin: 20px;
+  .button{
+    display: block;
+    margin: 20px;
+  }
+}
+
+h1.label {
+  text-align: center;
+}
+
+.register-button {
+  text-align: center;
+}
+
+.new-point-box {
+  margin-bottom: 20px;
+}
+
+.create-point-btn {
+  margin-top: 20px;
+  text-align: center;
+}
+
+index-map {
+  border: 1px solid lightgrey;
+  border-radius: 5px;
 }

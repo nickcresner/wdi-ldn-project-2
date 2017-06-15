@@ -1,51 +1,59 @@
-<h1>New Points</h1>
-
-<div class="row">
-
+<div class="columns">
+  <div class="column is-half">
   <div id="map" class="private-point"></div>
-  <form method="POST" action="/points" enctype="multipart/form-data">
-    <div>
-      <label for="pointName">Charge Point Name</label>
-      <input type="text" name="pointName" id="pointName">
-    </div>
+</div>
 
-    <div>
-      <label for="address">Address</label>
-      <textarea type="text" name="address" id="address"></textarea>
-      <input type="hidden" name="lat" id="lat">
-      <input type="hidden" name="lng" id="lng">
-    </div>
+<div class="column is-half">
+  <div class="box new-point-box">
+<form method="POST" action="/points" enctype="multipart/form-data">
+  <div>
+    <label class="label" for="pointName">Charge Point Name</label>
+    <input class="input" type="text" name="pointName" id="pointName">
+  </div>
 
-    <div>
-      <label for="available">Availability</label>
-      <input type="text" name="available" id="available">
-    </div>
+  <div>
+    <label class="label" for="address">Address</label>
+    <textarea class="textarea" type="text" name="address" id="address"></textarea>
+    <input type="hidden" name="lat" id="lat">
+    <input type="hidden" name="lng" id="lng">
+  </div>
 
-    <div>
-      <label for="Format">Format of Connector</label>
-      <select type="text" name="format" id="format">
-        <option>3-Pin Connector</option>
-        <option>Commando</option>
-        <option>CCS</option>
-        <option>Tesla</option>
-        <option>Type 2 Mennekes</option>
-        <option>Type 1</option>
-        <option>JEVS (CHAdeMO)</option>
-        <option>9-pin CCS (Combo)</option>
-        <option>Other</option>
-    </div>
+  <div>
+    <label class="label" for="available">Availability</label>
+    <select class="select" type="text" name="available" id="available">
+      <option>Available</option>
+      <option>Not Available</option>
+    </select>
+  </div>
+
+  <div>
+    <label class="label" for="Format">Format of Connector</label>
+    <select class="select" type="text" name="format" id="format">
+      <option>3-Pin Connector</option>
+      <option>Commando</option>
+      <option>CCS</option>
+      <option>Tesla</option>
+      <option>Type 2 Mennekes</option>
+      <option>Type 1</option>
+      <option>JEVS (CHAdeMO)</option>
+      <option>9-pin CCS (Combo)</option>
+      <option>Other</option>
+    </select>
+  </div>
 
 
-    <div>
-      <label for="notes">Notes</label>
-      <textarea name="notes" id="notes"></textarea>
-    </div>
+  <div>
+    <label class="label" for="notes">Notes</label>
+    <textarea class="textarea" name="notes" id="notes" ></textarea>
+  </div>
 
-    <div>
-      <label for="image">Image</label>
-      <input type="file" name="image" id="image">
-    </div>
-
-    <button class="button-primary">Create</button>
-  </form>
+  <div>
+    <label class="label" for="image">Image</label>
+    <input class="input" type="file" name="image" id="image">
+  </div>
+<div class="buttons">
+  <a class="button is-primary create-point-btn">Create new chargepoint</a>
+</div>
+</form>
+</div>
 </div>

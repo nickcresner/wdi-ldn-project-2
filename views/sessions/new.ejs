@@ -1,25 +1,21 @@
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.9&appId=642653795925190";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
 
-<h1>Login to Juicer</h1>
-<div class="loginForm">
+
+<div class="loginForm column is-offset-one-quarter is-half">
+  <h1 class="label" >Login to Juicer</h1>
   <form class="loginForm" method="POST" action="/login">
-    <div>
-      <label for="email">Email</label>
-      <input type="text" name="email" id="email" required>
-    </div>
-    <div>
-      <label for="password">Password</label>
-      <input type="password" name="password" id="password" required>
+    <div class="field">
+      <label class="label" for="email">Email</label>
+      <input class="input" type="text" name="email" id="email" required>
     </div>
 
-    <button class="button">Login</button>
-    <a href="<%= oauth.facebook.getLoginURL() %>" class="button is-primary">Login with Facebook</a>
-  </form>
+    <div class="field">
+      <label class="label" for="password">Password</label>
+      <input class="input" type="password" name="password" id="password" required>
+    </div>
+
+<div class="buttons">
+    <a class="button is-primary">Login</button>
+      <a href="<%= oauth.facebook.getLoginURL() %>" class="button is-primary"><i class="fa fa-facebook-official" aria-hidden="true">  </i> Login with Facebook</a>
+    </form>
+  </div>
 </div>

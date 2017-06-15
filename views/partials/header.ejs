@@ -1,38 +1,23 @@
-<header>
-  <nav class="navbar navbar-toggleable-md navbar-light bg-faded navbar-inverse bg-primary">
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" href="/points">Juicer</a>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="/points">Charge Points</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/points/new">Add a Charge Point</a>
-        </li>
-      </ul>
-        <ul class="nav navbar-nav navbar-right">
-        <%  if(!locals.isLoggedIn) { %>
-            <li class="nav-item">
-            <a class="nav-link" href="/login">Log In</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="/register">Register</a>
-            </li>
-            <% } else { %>
-              <li class="nav-item">
-              <a class="nav-link" href="/logout">Logout</a>
-              </li>
-              <li class="nav-item">
-              <a class="nav-link" href="/profile">Hi <%= `${user.username}` %></a>
-              </li>
+<nav class="nav has-shadow">
+    <div class="nav-left">
+      <a class="nav-item title is-2 logo">
+        <img src="/assets/images/002-flash-1.png" alt="Juicer logo">Juicer
+      </a>
+      <a class="nav-item" href="/points">Charge Points</a>
+      <a class="nav-item" href="/points/new">Add a Charge Point</a>
 
-              <% } %>
-              </div>
-          </ul>
 
-        </nav>
-      </header>
+
+    </div>
+    <div class="nav-right">
+      <%  if(!locals.isLoggedIn) { %>
+        <a class="nav-item" href="/login">Log In</a>
+        <a class="nav-item" href="/register">Register</a>
+        <% } else { %>
+          <a class="nav-item" href="/logout">Logout</a>
+          <a class="nav-item" href="/profile">Hi <%= `${user.username}` %></a>
+          <% } %>
+
+        </div>
+    </nav>

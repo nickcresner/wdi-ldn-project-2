@@ -9,7 +9,6 @@
 </head>
 <body>
   <% include ./partials/header %>
-  <div class="wrapper">
   <div class="columns">
   <div class="column">
     <% if (Object.keys(locals.messages).length !== 0) { %>
@@ -26,7 +25,6 @@
   <main class="container">
     <%- body %>
   </main>
-</div>
   <% include ./partials/footer %>
 </body>
 </html>

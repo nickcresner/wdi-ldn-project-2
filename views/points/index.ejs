@@ -1,9 +1,25 @@
-<div id="map" class="markers loading" data-points="<%= JSON.stringify(points) %>"></div>
+<div class="columns">
 
-<% points.forEach((point) => { %>
-  <div class="large-3 columns">
-  <a href="/points/<%= point.id %>">
-  <img class="thumbnail" src="<%= point.imageSRC %>" alt="<%= point.pointName %>">
-  <h2><%= point.pointName %></h2>
-  <h4><%= point.address %></h4>
-<% }) %>
+  <div class="column is-half points">
+
+    <% points.forEach((point) => { %>
+
+      <a href="/points/<%= point.id %>">
+      <div class="card index-card">
+      <div class="card-image index-card-image">
+      <img class="thumbnail" src="<%= point.imageSRC %>" alt="<%= point.pointName %>">
+      </div>
+      <div class='card-content'>
+      <h2><%= point.pointName %></h2>
+      <h4><%= point.address %></h4>
+      </div>
+      </div>
+      </a>
+      <% }) %>
+    </div>
+    <div class="column is-half">
+      <div class="index-box">
+      <div id="map" class="column markers loading" data-points="<%= JSON.stringify(points) %>"></div>
+    </div>
+    </div>
+  </div>

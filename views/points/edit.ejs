@@ -1,46 +1,48 @@
 <h1>Edit Point</h1>
 
-<div class="row">
-  <form class="six columns" method="POST" action="/points/<%= point.id %>" enctype="multipart/form-data">
-    <input type="hidden" name="_method" value="PUT">
-    <div>
-      <label for="pointName">Charge Point Name</label>
-      <input class="u-full-width" type="text" name="pointName" id="pointName" value="<%= point.pointName %>">
-    </div>
+<div class="columns">
+  <div class="column">
+    <form method="POST" action="/points/<%= point.id %>" enctype="multipart/form-data">
+      <input type="hidden" name="_method" value="PUT">
+      <div>
+        <label for="pointName">Charge Point Name</label>
+        <input type="text" name="pointName" id="pointName" value="<%= point.pointName %>">
+      </div>
 
-    <div>
-      <label for="address">Address</label>
-      <input class="u-full-width" type="text" name="address" id="address" value="<%= point.address %>">
-    </div>
+      <div>
+        <label for="address">Address</label>
+        <input type="text" name="address" id="address" value="<%= point.address %>">
+      </div>
 
-    <div>
-      <label for="lat">Lat</label>
-      <input class="u-full-width" type="text" name="lat" id="lat" value="<%= point.lat %>">
-    </div>
-    <div>
-      <label for="lng">Long</label>
-      <input class="u-full-width" type="text" name="lng" id="lng" value="<%= point.lng %>">
-    </div>
+      <div>
+        <label for="lat">Lat</label>
+        <input type="text" name="lat" id="lat" value="<%= point.lat %>">
+      </div>
+      <div>
+        <label for="lng">Long</label>
+        <input type="text" name="lng" id="lng" value="<%= point.lng %>">
+      </div>
 
-    <div>
-      <label for="available">Availability</label>
-      <input class="u-full-width" type="text" name="available" id="available" value="<%= point.available %>">
-    </div>
+      <div>
+        <label for="available">Availability</label>
+        <input type="text" name="available" id="available" value="<%= point.available %>">
+      </div>
 
-    <div>
-      <label for="Format">Format of Connector</label>
-      <input class="u-full-width" type="text" name="format" id="format" value="<%= point.format %>">
-    </div>
+      <div>
+        <label for="Format">Format of Connector</label>
+        <input type="text" name="format" id="format" value="<%= point.format %>">
+      </div>
 
-    <div>
-      <label for="Notes">Notes</label>
-      <input class="u-full-width" type="text" name="notes" id="notes" value="<%= point.notes %>">
-    </div>
-    <label for="image">Image</label>
-    <img src="<%= point.imageSRC %>" alt="<%= point.pointName %>">
-    <input type="file" name="image" id="image" value="<%= point.imageSRC %>">
+      <div>
+        <label for="Notes">Notes</label>
+        <input type="text" name="notes" id="notes" value="<%= point.notes %>">
+      </div>
+      <label for="image">Image</label>
+      <img src="<%= point.imageSRC %>" alt="<%= point.pointName %>">
+      <input type="file" name="image" id="image" value="<%= point.imageSRC %>">
 
 
-    <button class="button-primary u-full-width">Update Charge Point</button>
-  </form>
+      <<a class="button is-primary is-outlined">>Update Charge Point</a>
+    </form>
+  </div>
 </div>

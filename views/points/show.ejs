@@ -1,21 +1,26 @@
-<h1>User Charge Point</h1>
-<h2><%= point.pointName %></h2>
-<img src="<%= point.imageSRC %>" alt="<%= point.pointName %>">
-<h3>Address: <%= point.address %></h3>
-<h3>Latitude: <%= point.lat %></h3>
-<h3>Longitude: <%= point.lng %></h3>
-<p>Available: <%= point.availability %></p>
-<p>Notes: <%= point.notes %></p>
-<div id="map" class="private-point-show" data-location="<%= JSON.stringify({ lat: point.lat, lng: point.lng }) %>"></div>
 
+<h2 class="title is-2"><%= point.pointName %></h2>
 <% if(locals.isLoggedIn && point.belongsTo(user)) { %>
-  <a href="/points/<%= point.id %>/edit"><button class="button">Edit</button></a>
+  <a class="button is-primary is-outlined" href="/points/<%= point.id %>/edit">Edit</a>
   <form method="POST" action="/points/<%= point.id %>">
     <input type="hidden" name="_method" value="DELETE">
-    <button>Delete</button>
+    <a class="button is-primary is-outlined">Delete</a>
   </form>
 <% } %>
 
+
+<div class="columns">
+  <div class="column">
+<img src="<%= point.imageSRC %>" alt="<%= point.pointName %>">
+<h3>Address: <%= point.address %></h3>
+<div hidden id="lat"><%= point.lat %></div>
+<div hidden id="lng"><%= point.lng %></div>
+<p>Available: <%= point.availability %></p>
+<p>Notes: <%= point.notes %></p>
+</div>
+<div id="map" class="private-point-show column" private-point-show" data-location="<%= JSON.stringify({ lat: point.lat, lng: point.lng }) %>"></div>
+
+<div class="column">
 <h2>Bookings: </h2>
   <% point.bookings.forEach((booking) => { %>
     <div class="booking">
@@ -32,9 +37,10 @@
     </div>
   <% }) %>
 </p>
+</div>
 
 
-
+<div class="column">
 <% if(locals.isLoggedIn) { %>
   <section>
     <h4>Leave a comment</h4>
@@ -68,3 +74,5 @@
   <% } %>
 <% }) %>
 </section>
+</div>
+</div>

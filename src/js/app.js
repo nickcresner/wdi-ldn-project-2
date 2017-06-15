@@ -2,6 +2,13 @@
 
 $(() => {
 
+  var $navToggle = $('.nav-toggle');
+  var $navMenu = $('.nav-menu');
+
+  $navToggle.on('click', () => {
+    $navMenu.toggleClass('is-active');
+  });
+
 
   const $map = $('#map');
   const markers = [];
@@ -65,21 +72,25 @@ $(() => {
       });
 
       userPoints.forEach((point, i) => {
-        const userPointLatLng = {
-          lat: point.lat,
-          lng: point.lng
-        };
-
-        console.log(userPointLatLng);
 
         setTimeout(() => {
           const marker = new google.maps.Marker({
             map: map,
-            icon: '/assets/images/001-technology.png',
-            position: userPointLatLng,
+            icon: {
+              url: '/assets/images/001-technology.png',
+              anchor: new google.maps.Point(16, 64),
+              size: new google.maps.Size(64, 64),
+              origin: new google.maps.Point(0, 0)
+            },
+            position: {
+              lat: point.lat,
+              lng: point.lng
+            },
             title: point.pointName,
             animation: google.maps.Animation.BOUNCE
           });
+
+          marker.addListener('click', () => window.location.replace(`/points/${point._id}`));
           markers.push(map, marker);
         }, 200 * i);
 
@@ -108,7 +119,13 @@ $(() => {
 
     const marker = new google.maps.Marker({
       map: map,
-      icon: '/assets/images/001-technology.png'
+      icon: {
+        url: '/assets/images/001-technology.png',
+        anchor: new google.maps.Point(16, 64),
+        size: new google.maps.Size(64, 64),
+        origin: new google.maps.Point(0, 0)
+      },
+      animation: google.maps.Animation.BOUNCE
     });
     google.maps.event.addListener(map, 'click', (event) => {
       const myLatLng = event.latLng;
@@ -130,6 +147,7 @@ $(() => {
   function privatePointsShowMap() {
 
     const myLatLng = $map.data('location');
+
     console.log(myLatLng);
     const map = new google.maps.Map($map[0], {
       zoom: 14,
@@ -139,10 +157,16 @@ $(() => {
       mapTypeControl: true
     });
 
-    const marker = new google.maps.Marker({
+    new google.maps.Marker({
       map: map,
       position: myLatLng,
-      icon: '/assets/images/001-technology.png'
+      icon: {
+        url: '/assets/images/001-technology.png',
+        anchor: new google.maps.Point(16, 64),
+        size: new google.maps.Size(64, 64),
+        origin: new google.maps.Point(0, 0)
+      },
+      animation: google.maps.Animation.BOUNCE
     });
 
   }
