@@ -35,6 +35,7 @@ Users also have the ability to create edit and delete their user profiles
 - Google Maps API
 - Facebook oAuth Log-in API
 - MongoDB
+- Express.Js
 
 ##Challenges Faced
 
@@ -46,4 +47,5 @@ Understanding how all the different components of a restful app was difficult bu
 - Refactoring
 - Namespacing
 - Improved styling with a fullsized map background with floating divs.
-- Google places API suggesting local cafes for user to visit whilst their cars are charging. 
+- Google places API suggesting local cafes for user to visit whilst their cars are charging.
+- An about page explaining the idea of the site and how to use it. 
