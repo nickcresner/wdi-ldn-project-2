@@ -36,6 +36,7 @@ Users also have the ability to create edit and delete their user profiles
 - Facebook oAuth Log-in API
 - MongoDB
 - Express.Js
+- AWS and Image Upload
 
 ##Challenges Faced
 
